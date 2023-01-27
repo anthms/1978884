@@ -4,6 +4,21 @@ on:
 jobs:
   job-name:
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        os:
+          - { id: ubuntu-20.04, name: focal }
+        compiler:
+          - 'clang-15'
+        cpp_std:
+          - 'gcc-11'
+        include:
+          - compiler: 'clang-15'
+            cpp_std: 'c++20'
+          - compiler: 'gcc-11'
+            cpp_std: 'c++20'
+    
     steps:
-	- run: echo "Done"
-		
+    	- run: echo "Done"
+	
